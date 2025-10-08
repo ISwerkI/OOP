@@ -36,6 +36,7 @@ public:
 double distance(Point A, Point B);
 
 //#define STRUCT_POINT
+//#define DC
 
 void main()
 {
@@ -52,22 +53,15 @@ void main()
 	cout << pA->x << "\t" << pA->y << endl;
 #endif
 
-	Point A;
-	A.set_x(2);
-	A.set_y(3);
-	cout << A.get_x() << "\t" << A.get_y()<< endl;
+#ifdef DC
+	for (int i = 0; i < 10; i++)
+	{
+		cout << i << "\t";
+	}
+	cout << endl;
 
-	Point B;
-	B.set_x(7);
-	B.set_y(8);
-	cout << B.get_x() << "\t" << B.get_y() << endl;
-
-	cout << "Расстояние от 'А' до 'В': " << A.distance(B)<<endl;
-	cout << "Расстояние от 'B' до 'A': " << B.distance(A)<<endl;
-	cout << "Расстояние между 'А' и 'В': " << distance(A,B)<<endl;
-	cout << "Расстояние между 'B' и 'A': " << distance(B,A)<<endl;
+#endif
 }
-
 double distance(Point A, Point B)
 {
 	double x_distance = A.get_x() - B.get_y();
