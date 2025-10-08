@@ -1,5 +1,7 @@
 #include <iostream>
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 class Point
 {
@@ -22,27 +24,16 @@ public:
 	{
 		this->y = y;
 	}
-	double distance_x(double x,double coordinates)
+	double distance(Point other)
 	{
-		double distance;
-		distance = coordinates + x;
-		return distance;
-	}
-	double distance_y(double y, double coordinates)
-	{
-		double distance;
-		distance = coordinates + y;
-		return distance;
-	}
-	double distance_xy(double x, double y)
-	{
-		double distance;
-		if (x < 0) x *= -1;
-		if (y < 0) y *= -1;
-		distance = x + y;
+		double x_distance = this->x - other.x;
+		double y_distance = this->y - other.y;
+		double distance = sqrt(x_distance*x_distance+y_distance*y_distance);
 		return distance;
 	}
 };
+
+double distance(Point A, Point B);
 
 //#define STRUCT_POINT
 
@@ -64,9 +55,23 @@ void main()
 	Point A;
 	A.set_x(2);
 	A.set_y(3);
-	double distance_x=A.distance_x(5, 0);
-	double distance_y = A.distance_y(5, 0);
-	double distance_xy = A.distance_xy(5, -5);
 	cout << A.get_x() << "\t" << A.get_y()<< endl;
-	cout << distance_x << "\t" << distance_y <<"\t"<<distance_xy<< endl;
+
+	Point B;
+	B.set_x(7);
+	B.set_y(8);
+	cout << B.get_x() << "\t" << B.get_y() << endl;
+
+	cout << "Расстояние от 'А' до 'В': " << A.distance(B)<<endl;
+	cout << "Расстояние от 'B' до 'A': " << B.distance(A)<<endl;
+	cout << "Расстояние между 'А' и 'В': " << distance(A,B)<<endl;
+	cout << "Расстояние между 'B' и 'A': " << distance(B,A)<<endl;
+}
+
+double distance(Point A, Point B)
+{
+	double x_distance = A.get_x() - B.get_y();
+	double y_distance = A.get_y() - B.get_y();
+	double distance = sqrt(x_distance * x_distance + y_distance * y_distance);
+	return distance;
 }
