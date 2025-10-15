@@ -56,7 +56,7 @@ public:
 		cout << "Destrctor:\t" << this << endl;
 	}
 	//				Operators
-	void operator=(const Point other)
+	void operator=(const Point& other)
 	{
 		this->x = other.x;
 		this->y = other.y;
