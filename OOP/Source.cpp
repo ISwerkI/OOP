@@ -56,7 +56,7 @@ public:
 		cout << "Destrctor:\t" << this << endl;
 	}
 	//				Operators
-	void operator=(const Point& other)
+	void operator=(const Point other)
 	{
 		this->x = other.x;
 		this->y = other.y;
@@ -86,7 +86,7 @@ double distance(Point A, Point B);
 //#define STRUCT_POINT
 //#define DISTANCE_CHECK
 //#define CONSTRCTORS_CHECK
-//#define ASSIGNMET_CHECK
+#define ASSIGNMET_CHECK
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -148,7 +148,9 @@ void main()
 	cout << a << tab << b << tab << c << endl;
 
 	Point A, B, C;
-	A = B = C = Point(2, 3);
+	A = Point(2, 3);
+	B = A;
+	C = B;
 	A.print();
 	B.print();
 	C.print();
